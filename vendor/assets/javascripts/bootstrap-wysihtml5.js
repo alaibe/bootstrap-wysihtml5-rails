@@ -1,7 +1,7 @@
 !function($, wysi) {
     "use strict";
 
-    var templates = {
+    var defaultToolbar = {
         "font-styles": "<li class='dropdown'>" +
                            "<a class='btn dropdown-toggle' data-toggle='dropdown' href='#'>" +
                                "<i class='icon-font'></i>&nbsp;<span class='current-font'>Normal text</span>&nbsp;<b class='caret'></b>" +
@@ -69,6 +69,7 @@
     };
 
     var defaultOptions = {
+        "toolbar": defaultToolbar,
         "font-styles": true,
         "emphasis": true,
         "lists": true,
@@ -151,6 +152,11 @@
                 'class' : "wysihtml5-toolbar",
                 'style': "display:none"
             });
+            var templates = defaultToolbar;
+
+            if (options["toolbar"] !== undefined){
+              templates = options["toolbar"];
+            }
 
             for(var key in defaultOptions) {
                 var value = false;
